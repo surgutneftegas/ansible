@@ -39,9 +39,9 @@
         name: httpd
         state: started
 
-    - name: enable 80
+    - name: enable 8080
       firewalld:
-        port: 80/tcp
+        port: 8080/tcp
         state: enabled
 
 
