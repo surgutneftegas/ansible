@@ -28,8 +28,6 @@
       yum:
         name: firewalld
         state: latest
-      notify:
-        - start firewalld
 
     - name: enable 1234
       firewalld:
