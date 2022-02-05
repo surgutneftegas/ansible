@@ -1,7 +1,5 @@
 ---
 - hosts: server1
-  vars:
-    http_host = node1.example.com
 
   tasks:
     - name: Install httpd
@@ -22,7 +20,28 @@
         msg: "{{ ansible_facts.services['httpd.service'].state }}"
             
     - name: copy index test page
-        template:
-          src: "files/index.html.j2"
-          dest: "/var/www/{{ http_host }}/index.html"
+      template:
+        src: "files/index.html.j2"
+        dest: "/var/www/html/index.html"
 
+    - name: Install firewalld
+      yum:
+        name: firewalld
+        state: latest
+      notify:
+        - start firewalld
+
+    - name: enable 1234
+      firewalld:
+        port: 80/tcp
+        permanent: true
+        state: enabled
+      become: yes
+  
+  handlers:
+    name: start firewalld
+    service:
+      name: firewalld
+      state: started
+      enabled: yes
+    become: yes
