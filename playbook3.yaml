@@ -10,7 +10,7 @@
   - name: Add a line to a file grub
     lineinfile:
       path: /etc/default/grub
-      insertbefore: 'GRUB_DISABLE_RECOVERY="true"'
+      insertafter: 'quet"'
       line: "{{ item }}"
     with_items:
       - "net.ifnames=0"
