@@ -9,15 +9,14 @@
     
     - name: start apache
       service:
-        name=httpd
-        state=started
-        enabled=yes
+        name: httpd
+        state: started
     
     - name: Check for apache status
       service_facts:
 
     - debug:
-        var: ansible_facts.services.apache2.state
+        var: ansible_facts.services.httpd.state
 
   handlers:
     - name: start Apache
