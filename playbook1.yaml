@@ -1,6 +1,6 @@
 ---
-- hosts: server1
-
+- name: playbook1
+  hosts: server1
   tasks:
     - name: Install httpd
       yum:
