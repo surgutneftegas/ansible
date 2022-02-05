@@ -10,8 +10,8 @@
   - name: Add a line to a file grub
     lineinfile:
       path: /etc/default/grub
-      insertafter: '^#quiet '
-      regexp: '^#quiet '
+      insertafter: '^#quiet'
+      regexp: '^#quiet'
       line: 'quiet net.ifnames=0 biosdevname=0'
   #- name:
    # shell: grub2-mkconfig
