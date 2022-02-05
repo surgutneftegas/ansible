@@ -1,0 +1,15 @@
+---
+- name: playbook1
+  hosts: server1
+  user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+
+- name: Add a line to a file grub
+  lineinfile:
+    path: /etc/default/grub
+    line:
+      - net.ifnames=0
+      - biosdevname=0
+    create: yes
