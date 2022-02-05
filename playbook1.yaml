@@ -6,14 +6,11 @@
       yum:
         name: httpd
         state: latest
-      notify: start Apache
     
-    #- name: start apache
-    #  service:
-     #   name: httpd
-     #   state: started
-     
-    #  when: "{{ ansible_facts.services['httpd.service'].state }}" != "running"
+    - name: start apache
+      service:
+        name: httpd
+        state: started
     
     - name: Check for apache status
       service_facts:
@@ -27,7 +24,3 @@
         name: httpd
         state: started
 
-    - name: Restart Apache
-      service:
-        name: apache2
-        state: restarted
