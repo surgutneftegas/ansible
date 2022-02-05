@@ -14,9 +14,9 @@
     
     - name: Check for apache status
       service_facts:
-
-    - debug:
-        var: ansible_facts.services.apache2
+    - name: See fact for apache
+      debug:
+        msg: "{{ ansible_facts.services.apache2 }}"
 
   handlers:
     - name: start Apache
