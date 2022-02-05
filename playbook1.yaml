@@ -1,47 +1,47 @@
 ---
-- name: playbook1
-  hosts: server1
-  tasks:
-    - name: Install httpd
-      yum:
-        name: httpd
-        state: latest
+  - name: playbook1
+    hosts: server1
+    tasks:
+      - name: Install httpd
+        yum:
+          name: httpd
+          state: latest
     
-    - name: start apache
-      service:
-        name: httpd
-        state: started
+      - name: start apache
+        service:
+          name: httpd
+          state: started
     
-    - name: Check for apache status
-      service_facts:
+      - name: Check for apache status
+        service_facts:
     
-    - name: See fact for apache
-      debug:
-        msg: "{{ ansible_facts.services['httpd.service'].state }}"
+      - name: See fact for apache
+        debug:
+          msg: "{{ ansible_facts.services['httpd.service'].state }}"
             
-    - name: copy index test page
-      template:
-        src: "files/index.html.j2"
-        dest: "/var/www/html/index.html"
+      - name: copy index test page
+        template:
+          src: "files/index.html.j2"
+          dest: "/var/www/html/index.html"
 
-    - name: Install firewalld
-      yum:
-        name: firewalld
-        state: latest
-      notify:
-        - start firewalld
+      - name: Install firewalld
+        yum:
+          name: firewalld
+          state: latest
+        notify:
+          - start firewalld
 
-    - name: enable 1234
-      firewalld:
-        port: 80/tcp
-        permanent: true
-        state: enabled
-      become: yes
+      - name: enable 1234
+        firewalld:
+          port: 80/tcp
+          permanent: true
+          state: enabled
+        become: yes
   
-  handlers:
-    name: start firewalld
-    service:
-      name: firewalld
-      state: started
-      enabled: yes
-    become: yes
+    handlers:
+      name: start firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+      become: yes
