@@ -1,6 +1,11 @@
 ---
 - name: playbook1
   hosts: server1
+  user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+
   tasks:
     - name: Install httpd
       yum:
@@ -33,13 +38,10 @@
       service:
         name: httpd
         state: started
-      become: yes
 
     - name: enable 80
       firewalld:
         port: 80/tcp
-        permanent: true
         state: enabled
-      become: yes
 
 
