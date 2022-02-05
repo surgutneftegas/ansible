@@ -9,7 +9,7 @@
 - name: Add a line to a file grub
   lineinfile:
     path: /etc/default/grub
-    line:
-      - net.ifnames=0
-      - biosdevname=0
-    create: yes
+    line: "{{ item }}"
+  with_items:
+    - "net.ifnames=0"
+    - "biosdevname=0"
