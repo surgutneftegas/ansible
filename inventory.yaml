@@ -6,5 +6,5 @@ node1.example.com
 node2.example.com
 
 [servers:children]
-node1.example.com
-node2.example.com
+server1
+server2
