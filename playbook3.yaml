@@ -14,3 +14,5 @@
     with_items:
       - "net.ifnames=0"
       - "biosdevname=0"
+  - name:
+    shell: grub2-mkconfig
