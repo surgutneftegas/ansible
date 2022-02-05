@@ -43,10 +43,10 @@
         name: httpd
         state: started
 
-    - name: enable 8080
+    - name: enable 80
       firewalld:
         zone: public
-        port: 8080/tcp
+        port: 80/tcp
         state: enabled
         permanent: true
 
