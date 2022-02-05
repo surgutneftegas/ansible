@@ -11,6 +11,10 @@
       yum:
         name: httpd
         state: latest
+    
+    - name: disalble Selinux
+      selinux:
+        state: disalble
   
     - name: start apache
       service:
