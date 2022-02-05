@@ -28,8 +28,14 @@
       yum:
         name: firewalld
         state: latest
+            
+    - name: start Apache
+      service:
+        name: httpd
+        state: started
+      become: yes
 
-    - name: enable 1234
+    - name: enable 80
       firewalld:
         port: 80/tcp
         permanent: true
