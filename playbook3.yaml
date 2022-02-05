@@ -6,10 +6,11 @@
   become_method: sudo
   become_user: root
 
-- name: Add a line to a file grub
-  lineinfile:
-    path: /etc/default/grub
-    line: "{{ item }}"
-  with_items:
-    - "net.ifnames=0"
-    - "biosdevname=0"
+  tasks:
+  - name: Add a line to a file grub
+    lineinfile:
+      path: /etc/default/grub
+      line: "{{ item }}"
+    with_items:
+      - "net.ifnames=0"
+      - "biosdevname=0"
