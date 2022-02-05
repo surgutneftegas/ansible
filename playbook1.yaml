@@ -1,5 +1,7 @@
 ---
 - hosts: server1
+  vars:
+    http_host = node1.example.com
 
   tasks:
     - name: Install httpd
@@ -14,13 +16,13 @@
     
     - name: Check for apache status
       service_facts:
+    
     - name: See fact for apache
       debug:
         msg: "{{ ansible_facts.services['httpd.service'].state }}"
-
-  handlers:
-    - name: start Apache
-      service:
-        name: httpd
-        state: started
+            
+    - name: copy index test page
+        template:
+          src: "files/index.html.j2"
+          dest: "/var/www/{{ http_host }}/index.html"
 
