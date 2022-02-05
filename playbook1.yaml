@@ -41,7 +41,9 @@
 
     - name: enable 8080
       firewalld:
+        zone: public
         port: 8080/tcp
         state: enabled
+        permanent: true
 
 
