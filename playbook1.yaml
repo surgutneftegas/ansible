@@ -10,7 +10,7 @@
     - name: start apache
       service:
         name: httpd
-         state: started
+        state: started
   
     - name: Check for apache status
       service_facts:
