@@ -39,8 +39,8 @@
       become: yes
 
   handlers:
-    name: start firewalld
-    service:
-      name: firewalld
-      state: started
-      enabled: yes 
+      name: start firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: yes 
