@@ -1,1 +1,31 @@
 ---
+- hosts: server1
+
+  tasks:
+    - name: Install httpd2
+      yum:
+        name: httpd
+        state: latest
+    
+    - name: start apache
+      service:
+        name=httpd
+        state=started
+        enabled=yes
+    
+    - name: Check for apache status
+      service_facts:
+
+    - debug:
+        var: ansible_facts.services.apache2.state
+
+  handlers:
+    - name: start Apache
+      service:
+        name: apache2
+        state: start
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
