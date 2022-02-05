@@ -10,9 +10,7 @@
   - name: Add a line to a file grub
     lineinfile:
       dest: /etc/default/grub
-      state: present
-      regexp: '^(GRUB_CMDLINE_LINUX="crashkernel=auto(.*)$)'
-      backrefs: yes
-      line: '\6, net.ifnames=0 biosdevname=0'
+      regexp: '^GRUB_CMDLINE_LINUX="crashkernel='
+      line: 'GRUB_CMDLINE_LINUX="crashkernel= auto resume=/dev/mapper/cl-swap rd.lvm.lv=cl/root rd.lvm.lv=cl/swap rhgb quiet net.ifnames=0 и biosdevname=0"'
   #- name:
    # shell: grub2-mkconfig
