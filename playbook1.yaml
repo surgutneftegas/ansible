@@ -14,7 +14,7 @@
     
     - name: disalble Selinux
       selinux:
-        state: disalbled
+        state: disabled
   
     - name: start apache
       service:
