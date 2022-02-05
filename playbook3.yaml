@@ -9,9 +9,8 @@
   tasks:
   - name: Add a line to a file grub
     lineinfile:
-      path: /etc/default/grub
-      insertafter: '^#quiet"'
-      regexp: '^#quiet"'
-      line: 'net.ifnames=0 biosdevname=0'
+      dest: /etc/default/grub
+      regexp: '^GRUB_CMDLINE_LINUX="crashkernel=auto'
+      line: '\6 net.ifnames=0 biosdevname=0'
   #- name:
    # shell: grub2-mkconfig
