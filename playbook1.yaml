@@ -16,7 +16,7 @@
       service_facts:
     - name: See fact for apache
       debug:
-        msg: "{{ ansible_facts.services }}"
+        msg: "{{ ansible_facts.services.httpd.state }}"
 
   handlers:
     - name: start Apache
