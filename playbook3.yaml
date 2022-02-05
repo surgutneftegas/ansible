@@ -10,10 +10,11 @@
   - name: Add a line to a file grub
     lineinfile:
       path: /etc/default/grub
-      insertafter: 'quet"'
+      insertafter: '^#quet '
+      regexp: '^#quet '
       line: "{{ item }}"
     with_items:
       - "net.ifnames=0"
       - "biosdevname=0"
-  - name:
-    shell: grub2-mkconfig
+  #- name:
+   # shell: grub2-mkconfig
